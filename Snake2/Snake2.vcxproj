@@ -115,6 +115,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Engine.cpp" />
+    <ClCompile Include="Engine\GameManager.cpp" />
+    <ClCompile Include="Engine\Globals.cpp" />
+    <ClCompile Include="Engine\Graph.cpp" />
+    <ClCompile Include="Engine\SceneGraph.cpp" />
+    <ClCompile Include="Engine\Sprite.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\Engine.hpp" />
+    <ClInclude Include="Engine\GameManager.hpp" />
+    <ClInclude Include="Engine\Globals.hpp" />
+    <ClInclude Include="Engine\Graph.hpp" />
+    <ClInclude Include="Engine\SceneGraph.hpp" />
+    <ClInclude Include="Engine\Sprite.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
