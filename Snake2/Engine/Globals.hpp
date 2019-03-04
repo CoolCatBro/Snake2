@@ -17,6 +17,9 @@ extern char DOWN;
 extern char RIGHT;
 
 //Sprites
-extern string PLAYER;
+extern char WALL;
+extern char FOOD;
+extern char SNAKE;
+extern char HEAD;
 
 #endif

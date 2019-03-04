@@ -1,4 +1,6 @@
+//Sprite is inherited from node 
 /*Sprite is texture + position. Anchor point of every sprite is top-left */
+//Sprite can support multiple file + animation using dt variable
 
 #pragma once
 
@@ -18,7 +20,7 @@ public:
 	   ,x, y
 	   ,height, width;
 
-	Sprite(Scene*,string,int width,int height,int x,int y,int nframe=1);
+	Sprite(Layer*,string,int width,int height,int x,int y,int nframe=1);
 	virtual ~Sprite();
 
 	virtual void load(); 

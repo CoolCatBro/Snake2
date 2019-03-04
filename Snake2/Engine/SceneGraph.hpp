@@ -54,10 +54,11 @@ class Layer
 {
 protected:
 
-	Scene* scene;
 	vector<Node*> Nodes;
 
 public:
+
+	Scene* scene;				//Every layer has a refrence to scene
 
 	string id;	// an id is associated to each layer for purpose of identification
 
@@ -79,16 +80,16 @@ class Node
 {
 protected:
 
-	Scene* scene;
-
 public:
+
+	Scene* scene;			//Every node has a refrence to scene
 
 	string id;
 
-	Node(Scene* scene,string id);
+	Node(Layer* layer,string id);
 	virtual ~Node();
 
-	// These two function are to be overwrite for any node component to work
+	// These two function are to be overwriten for any node component to work
 
 	//overwrite to set dependencies
 	virtual void load() = 0;

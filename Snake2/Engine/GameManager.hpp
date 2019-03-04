@@ -7,6 +7,7 @@
 #include "Globals.hpp"
 
 #include <ctime>
+#include <cstdio>
 
 class GameManager : public Scene
 {

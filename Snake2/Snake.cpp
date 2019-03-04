@@ -2,11 +2,11 @@
 
 //Snake-----------------------------------------------------------
 
-Snake::Snake() :Node("snake")
+Snake::Snake(Level *level) 
+	  :Node(level,"snake"),level(level)
 {
 	x = 30;
 	y = 10;
-	score = 0;
 	bodyLength = 2;
 	direction = 'd';
 
@@ -16,28 +16,27 @@ Snake::Snake() :Node("snake")
 	}
 }
 
+void Snake::load()
+{
+	//Dependency from other layers
+}
+
 void Snake::eat()
 {
-	score++;
+	level->gm->score++;
 	bodyLength++;
 	body.push_back(pair<int, int>(-1, -1));
 }
 
-void Snake::moveSnake(Scene* scene,Food* food)
+void Snake::move()
 {
-  if(!dead)
+  if(!collide())
   {
-	if(x == GAME_WIDTH)
-		x=0;
-	if(y == GAME_HEIGHT && direction == DOWN)
-		y=0;
-	if(y == 0 && direction == UP)
-		y== GAME_HEIGHT;
 	
-    if(food->x == x && food->y == y)
+    if(level->food.first == x && level->food.second == y)
     {
       eat();
-	  food->addFood(scene);
+	  level->addFood = true;
     }
 
     if(direction==UP)
@@ -60,20 +59,7 @@ void Snake::moveSnake(Scene* scene,Food* food)
 	  body.pop_back();
 	  body.push_front(pair<int, int>(x++, y));
 	}
-
-	if(die(scene))
-	dead=true;
  }
-  else
-  {
-	  scene->removeLayer("level");
-	  scene->gameRenderer.clear();
-	  scene->gameRenderer.mvprintW(GAME_WIDTH / 2 - 4, GAME_HEIGHT / 2, "GAME OVER");
-	  scene->gameRenderer.mvprintW(GAME_WIDTH / 2 - 4, GAME_HEIGHT / 2 + 1, "SCORE : " + to_string(score));
-	  scene->gameRenderer.refresh();
-	  Sleep(2500);
-	  exit(0);
-  }
 }
 
 void Snake::setDirection(char ch)
@@ -84,13 +70,13 @@ void Snake::setDirection(char ch)
   direction=ch;
 }
 
-int Snake::die(Scene * scene)
+bool Snake::collide()
 {
-  if ((scene->gameRenderer.moveXY(x,y) && scene->gameRenderer.readCh() == WALL_CHAR)  
+  if ((scene->gameEng.moveXY(x,y) && scene->gameEng.readCh() == WALL)  
 	  || (find(body.begin(),body.end(),pair<int,int>(x,y)) != body.end()) )
-  return 1;
+  return true;
   else
-  return 0;
+  return false;
 }
 
 void Snake::reset()
@@ -106,11 +92,11 @@ void Snake::reset()
 	direction = 'd';
 }
 
-void Snake::render(Scene* scene)
+void Snake::render(double& dt)
 {
   for(int i=0;i<bodyLength;i++)
   {
-       scene->gameRenderer.mvprintCh(body[i].first, body[i].second,SNAKE_CHAR);
+       scene->gameEng.mvprintCh(body[i].first, body[i].second,SNAKE);
   }
-       scene->gameRenderer.mvprintCh(x,y, HEAD_CHAR);
+       scene->gameEng.mvprintCh(x,y, HEAD);
 }

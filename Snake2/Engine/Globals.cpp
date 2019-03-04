@@ -1,8 +1,8 @@
 #include "Globals.hpp"
 
 //META
-int GAME_WIDTH=655;
-int GAME_HEIGHT = 126;
+int GAME_WIDTH=100;
+int GAME_HEIGHT =30;
 
 //CONTROLS
 char UP = 'w';
@@ -11,4 +11,7 @@ char DOWN = 's';
 char RIGHT = 'd';
 
 //Sprites
-string PLAYER = " P ";
+char WALL = '#';
+char FOOD = 'F';
+char SNAKE = '*';
+char HEAD = 'o';

@@ -1,48 +1,30 @@
+// Layer for food level and maze
+
 #pragma once
 
-#include "SceneGraph.hpp"
-#include "Globals.hpp"
+#include "Engine/SceneGraph.hpp"
+#include "Engine/Globals.hpp"
+#include "Engine/GameManager.hpp"
 
-#include <fstream>
-#include <vector>
+#include <utility>
 
-using std::ifstream;
-using std::vector;
-
-class Level;
-class Stage;
-class Food;
+using std::pair;
 
 class Level : public Layer
 {
-	Stage *stage;
+
+public:
+	GameManager* gm;
+
+// can acess by nodes
+
+//Food------------------
+	pair<int, int> food;
+	bool addFood;
+//------------------------
 
 public:
 
-	Level();
-	void loadStage(string filename);
+	Level(GameManager *gm);
 
 };
-
-class Stage : public Node
-{
-public:
-   
-	string *stage = new string[GAME_HEIGHT];
-
-	Stage();
-	~Stage();
-	void render(Scene* scene);
-};
-
-class Food :public Node
-{
-public:
-
-	int x, y;
-
-	Food();
-	void addFood(Scene *scene);
-	void render(Scene *scene);
-};
-

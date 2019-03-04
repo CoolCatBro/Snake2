@@ -52,6 +52,7 @@ Layer::Layer(Scene* scene,string id)
 {
 	this->scene = scene;
 	this->id = id;
+	scene->addLayer(this);
 }
 
 Layer::~Layer()
@@ -97,10 +98,11 @@ void Layer::render(double &dt)
 
 //Node------------------------------------------------------------
 
-Node::Node(Scene* scene,string id)
+Node::Node(Layer* layer,string id)
 {
-	this->scene = scene;
+	this->scene = layer->scene;
 	this->id = id;
+	layer->addNode(this);
 }
 
 Node::~Node()
