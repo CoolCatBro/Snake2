@@ -26,7 +26,6 @@ void GameManager::render()
 	Scene::render(dt);
 
 	gameEng.mvprintW(1, GAME_HEIGHT, "Score:" + std::to_string(score));
-	gameEng.mvprintW(GAME_WIDTH / 2 - 10, GAME_HEIGHT, "Press Esc to go to menu");
 	gameEng.mvprintW(GAME_WIDTH - 8, GAME_HEIGHT, "Lives:" + std::to_string(lives));
 
 }

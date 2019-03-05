@@ -11,12 +11,12 @@ void Food::createFood()
 {
 	if (level->addFood)
 	{
-		int x = rand() % GAME_WIDTH;
-		int y = rand() % GAME_HEIGHT;
+		int x = rand() % (GAME_WIDTH);
+		int y = rand() % (GAME_HEIGHT);
 		while ((scene->gameEng.moveXY(x, y) && scene->gameEng.readCh() != ' '))
 		{
-			x = rand() % GAME_WIDTH;
-			y = rand() % GAME_HEIGHT;
+			x = rand() % (GAME_WIDTH);
+			y = rand() % (GAME_HEIGHT);
 		}
 		level->food = pair<int, int>(x, y);
 		level->addFood = false;

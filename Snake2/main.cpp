@@ -21,12 +21,12 @@ int main()
 	char key='\0';
 	while (1)
 	{
-		Sleep(100);
+		Sleep(0);
 
-		if(_kbhit())
-		key = _getch();
-		snake->setDirection(key);
-		snake->move();
+		//if(_kbhit())
+		//key = _getch();
+		//snake->setDirection(key);
+		snake->moveAI();
 
 		gm.render();
 		gm.gameEng.refresh();

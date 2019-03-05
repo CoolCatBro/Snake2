@@ -3,6 +3,7 @@
 #include "Engine/SceneGraph.hpp"
 #include "Engine/Globals.hpp"
 #include "Engine/GameManager.hpp"
+#include "Engine/Tree.hpp"
 
 #include "Level.hpp"
 
@@ -17,10 +18,11 @@ using std::to_string;
 
 class Snake: public Node
 {
-
-	bool dead = false;
 	deque <pair<int, int> > body;
 	
+	bool **visited;
+	Tree* gr;
+
 	// Snake dependencies
 	Level* level;
 
@@ -30,6 +32,12 @@ public:
 	int x,y;         
 	int bodyLength;
 	char direction;
+
+private:
+
+	void _findPath();
+	bool _getNeighbour(int rx,int ry);
+	deque<char> path;
 
 public:
 	
@@ -44,6 +52,7 @@ public:
 	//snake owns method
 	void eat();
 	void move();
+	void moveAI();          //Using bfs
 	void setDirection(char);
 	bool collide();
 	void reset();

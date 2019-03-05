@@ -118,23 +118,25 @@
     <ClCompile Include="Engine\Engine.cpp" />
     <ClCompile Include="Engine\GameManager.cpp" />
     <ClCompile Include="Engine\Globals.cpp" />
-    <ClCompile Include="Engine\Graph.cpp" />
+    <ClCompile Include="Engine\Tree.cpp" />
     <ClCompile Include="Engine\SceneGraph.cpp" />
     <ClCompile Include="Engine\Sprite.cpp" />
     <ClCompile Include="Food.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Maze.cpp" />
     <ClCompile Include="Snake.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Engine.hpp" />
     <ClInclude Include="Engine\GameManager.hpp" />
     <ClInclude Include="Engine\Globals.hpp" />
-    <ClInclude Include="Engine\Graph.hpp" />
+    <ClInclude Include="Engine\Tree.hpp" />
     <ClInclude Include="Engine\SceneGraph.hpp" />
     <ClInclude Include="Engine\Sprite.hpp" />
     <ClInclude Include="Food.hpp" />
     <ClInclude Include="Level.hpp" />
+    <ClInclude Include="Maze.hpp" />
     <ClInclude Include="Snake.hpp" />
   </ItemGroup>
   <ItemGroup>
