@@ -107,7 +107,7 @@ void Snake::_findPath()
 		}
 	}
 	else {
-		int a = -1;
+		scene->gameEng.mvprintW(GAME_WIDTH / 2, GAME_HEIGHT / 2, "GAME OVER");
 	}
 	delete gr;
 	que.clear();

@@ -23,7 +23,7 @@ int main()
 	char key='\0';
 	while (1)
 	{
-		Sleep(30);
+		Sleep(0);
 		
 		//if(_kbhit())
 		//key = _getch();
