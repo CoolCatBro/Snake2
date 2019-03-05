@@ -17,18 +17,21 @@ int main()
 	Food* food = new Food(level);
 
 	gm.load();
+	gm.render();
+	gm.gameEng.refresh();
 	
 	char key='\0';
 	while (1)
 	{
-		Sleep(0);
-
+		Sleep(30);
+		
 		//if(_kbhit())
 		//key = _getch();
 		//snake->setDirection(key);
-		snake->moveAI();
+		//snake->move();
 
 		gm.render();
+		snake->moveAI();
 		gm.gameEng.refresh();
 		gm.gameEng.clear();
 	}

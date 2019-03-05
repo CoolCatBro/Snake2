@@ -35,7 +35,11 @@ void Snake::_findPath()
 	{
 		for (int j = 0; j < GAME_WIDTH; j++)
 		{
-			visited[i][j] = false;
+			//The not visitable pieces are true
+			if (scene->gameEng.moveXY(j, i) && (scene->gameEng.readCh() == ' ' || scene->gameEng.readCh() == FOOD) )
+				visited[i][j] = false;
+			else
+				visited[i][j] = true;
 		}
 	}
 
@@ -45,7 +49,6 @@ void Snake::_findPath()
 	bool found = false;
 
 	que.push_back(gr->root);
-	visited[y][x] = true;
 
 	while (!que.empty())
 	{
@@ -103,22 +106,23 @@ void Snake::_findPath()
 			end = end->parent;
 		}
 	}
+	else {
+		int a = -1;
+	}
 	delete gr;
 	que.clear();
 }
 
 bool Snake::_getNeighbour(int rx, int ry)
 {
-	if ((rx >= 0 && rx < GAME_WIDTH) && (ry >= 0 && ry < GAME_HEIGHT) 
-		&& !visited[ry][rx] 
-		&& scene->gameEng.moveXY(rx, ry) 
-		//&& (scene->gameEng.readCh() == ' ' || scene->gameEng.readCh() == FOOD)
-		)
+	if ((rx >= 0 && rx < GAME_WIDTH) && (ry >= 0 && ry < GAME_HEIGHT))
 	{
-		return true;
+		if (!visited[ry][rx])
+		{
+			return true;
+		}
 	}
-	else
-		return false;
+	return false;
 }
 
 void Snake::eat()
@@ -130,7 +134,7 @@ void Snake::eat()
 
 void Snake::move()
 {
-  if(true)//!collide())
+  if(!collide())
   {
 	
     if(level->food.first == x && level->food.second == y)
@@ -162,6 +166,7 @@ void Snake::move()
  }
 }
 
+//Depends on move
 void Snake::moveAI() 
 {
 	if (!path.empty())
